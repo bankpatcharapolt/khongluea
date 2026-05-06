@@ -45,10 +45,21 @@
             </a>
           </li>
 
-          <!-- Chat -->
+          <!-- Chat + Unread badge -->
           <li class="nav-item position-relative">
             <a class="nav-link" href="<?= site_url('chat') ?>" title="ข้อความ">
               <i class="bi bi-chat-dots fs-5"></i>
+              <?php
+              try {
+                  $this->load->model('Message_model');
+                  $_unread = $this->Message_model->unread_count($user['id']);
+                  if ($_unread > 0):
+              ?>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                    style="background:var(--orange);font-size:.6rem;min-width:16px;padding:2px 5px;margin-left:-8px;margin-top:4px;">
+                <?= $_unread > 99 ? '99+' : $_unread ?>
+              </span>
+              <?php endif; } catch (Throwable $e) {} ?>
             </a>
           </li>
 

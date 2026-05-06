@@ -118,6 +118,7 @@ class Chat extends CI_Controller {
             'message'    => $message,
             'sender'     => $user['name'],
             'time'       => date('H:i'),
+            'csrf_token' => $this->security->get_csrf_hash(), // token ใหม่สำหรับ request ถัดไป
         ]));
     }
 
@@ -156,8 +157,12 @@ class Chat extends CI_Controller {
     {
         $token_name  = $this->security->get_csrf_token_name();
         $token_value = $this->security->get_csrf_hash();
-        $header_val  = $this->input->get_request_header('X-CSRF-Token');
-        if ($header_val !== $token_value) {
+        
+        // รับ token จาก header หรือ POST body อย่างใดอย่างหนึ่ง
+        $header_val = $this->input->get_request_header('X-CSRF-Token');
+        $post_val   = $this->input->post($token_name);
+        
+        if ($header_val !== $token_value && $post_val !== $token_value) {
             $this->output->set_status_header(403)->set_content_type('application/json')
                 ->set_output(json_encode(['error' => 'CSRF token mismatch.']));
             exit;
