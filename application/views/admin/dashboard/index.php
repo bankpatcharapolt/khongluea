@@ -1,14 +1,14 @@
 <div class="row g-3 mb-4">
     <div class="col-sm-6 col-xl-3">
         <div class="kl-stat-card">
-            <div class="stat-icon" style="background:#e8f7ef;color:#1a9e5c;"><i class="bi bi-people-fill"></i></div>
-            <div><div class="stat-label">ผู้ใช้ทั้งหมด</div><div class="stat-value" style="color:#1a9e5c;"><?= number_format($total_users) ?></div></div>
+            <div class="stat-icon" style="background:#e7f0fd;color:#1877f2;"><i class="bi bi-people-fill"></i></div>
+            <div><div class="stat-label">ผู้ใช้ทั้งหมด</div><div class="stat-value" style="color:#1877f2;"><?= number_format($total_users) ?></div></div>
         </div>
     </div>
     <div class="col-sm-6 col-xl-3">
         <div class="kl-stat-card">
-            <div class="stat-icon" style="background:#e8f7ef;color:#1a9e5c;"><i class="bi bi-grid-fill"></i></div>
-            <div><div class="stat-label">ประกาศที่เปิดอยู่</div><div class="stat-value" style="color:#1a9e5c;"><?= number_format($active_items) ?></div></div>
+            <div class="stat-icon" style="background:#e7f0fd;color:#1877f2;"><i class="bi bi-grid-fill"></i></div>
+            <div><div class="stat-label">ประกาศที่เปิดอยู่</div><div class="stat-value" style="color:#1877f2;"><?= number_format($active_items) ?></div></div>
         </div>
     </div>
     <div class="col-sm-6 col-xl-3">
@@ -32,12 +32,12 @@
             <div class="list-group list-group-flush">
                 <?php
                 $links = [
-                    ['admin/users',      'bi-people',      '#1a9e5c', 'จัดการผู้ใช้'],
-                    ['admin/items',      'bi-grid',        '#1a9e5c', 'จัดการประกาศ'],
+                    ['admin/users',      'bi-people',      '#1877f2', 'จัดการผู้ใช้'],
+                    ['admin/items',      'bi-grid',        '#1877f2', 'จัดการประกาศ'],
                     ['admin/reports',    'bi-flag',        '#ef4444', 'ตรวจสอบรายงาน'],
                     ['admin/categories', 'bi-tags',        '#f97316', 'หมวดหมู่'],
                     ['admin/packages',   'bi-star',        '#fbbf24', 'แพ็กเกจพรีเมียม'],
-                    ['admin/credits',    'bi-coin',        '#1a9e5c', 'ประวัติเครดิต'],
+                    ['admin/credits',    'bi-coin',        '#1877f2', 'ประวัติเครดิต'],
                 ];
                 foreach ($links as [$url, $icon, $color, $label]):
                 ?>

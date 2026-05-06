@@ -1,5 +1,5 @@
 <div class="container py-4" style="max-width:700px;">
-    <h4 class="fw-bold mb-4"><i class="bi bi-chat-dots text-green me-2"></i>กล่องข้อความ</h4>
+    <h4 class="fw-bold mb-4"><i class="bi bi-chat-dots text-primary me-2"></i>กล่องข้อความ</h4>
 
     <?php if (empty($conversations)): ?>
         <div class="text-center py-5">
@@ -17,10 +17,10 @@
                 $has_unread  = $conv['unread_count'] > 0;
             ?>
             <a href="<?= site_url('chat/' . $conv['id']) ?>"
-               class="d-flex gap-3 p-3 text-decoration-none <?= $has_unread ? 'bg-green-light' : '' ?> <?= $i > 0 ? 'border-top' : '' ?>"
+               class="d-flex gap-3 p-3 text-decoration-none <?= $has_unread ? 'bg-blue-light' : '' ?> <?= $i > 0 ? 'border-top' : '' ?>"
                style="color:var(--kl-text);transition:background .15s;"
-               onmouseover="this.style.background='var(--kl-green-light)'"
-               onmouseout="this.style.background='<?= $has_unread ? 'var(--kl-green-light)' : 'transparent' ?>'">
+               onmouseover="this.style.background='var(--kl-blue-light)'"
+               onmouseout="this.style.background='<?= $has_unread ? 'var(--kl-blue-light)' : 'transparent' ?>'">
 
                 <!-- Avatar -->
                 <div class="flex-shrink-0">
@@ -29,7 +29,7 @@
                              width="48" height="48" style="object-fit:cover;" alt="">
                     <?php else: ?>
                         <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white"
-                             style="width:48px;height:48px;background:var(--kl-green);font-size:18px;">
+                             style="width:48px;height:48px;background:var(--kl-blue);font-size:18px;">
                             <?= strtoupper(substr($other_name, 0, 1)) ?>
                         </div>
                     <?php endif; ?>
@@ -42,14 +42,14 @@
                         </span>
                         <?php if ($has_unread): ?>
                             <span class="badge rounded-pill ms-2"
-                                  style="background:var(--kl-green);font-size:.72rem;">
+                                  style="background:var(--kl-blue);font-size:.72rem;">
                                 <?= $conv['unread_count'] ?>
                             </span>
                         <?php endif; ?>
                     </div>
                     <div class="small text-muted text-truncate">
                         <span class="badge me-1"
-                              style="background:var(--kl-green-light);color:var(--kl-green);border:1px solid var(--kl-green-mid);font-size:.7rem;">
+                              style="background:var(--kl-blue-light);color:var(--kl-blue);border:1px solid var(--kl-blue-mid);font-size:.7rem;">
                             <?= htmlspecialchars(truncate_text($conv['item_title'] ?? '', 20)) ?>
                         </span>
                         <?= htmlspecialchars(truncate_text($conv['last_message'] ?? '…', 50)) ?>

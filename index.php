@@ -312,4 +312,10 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
-require_once BASEPATH.'core/CodeIgniter.php';
+// Auto-detect base URL
+if (!empty($_SERVER["HTTP_HOST"])) {
+    $proto = (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") ? "https" : "http";
+    $dir   = rtrim(dirname($_SERVER["SCRIPT_NAME"]), "/\\");
+    $_SERVER["_CI_BASE_URL"] = $proto . "://" . $_SERVER["HTTP_HOST"] . $dir . "/";
+}
+require_once BASEPATH."core/CodeIgniter.php";

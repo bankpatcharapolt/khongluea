@@ -1,12 +1,12 @@
 <div class="container py-4" style="max-width:740px;">
-    <h4 class="fw-bold mb-4"><i class="bi bi-plus-circle text-green me-2"></i>ลงประกาศของ</h4>
+    <h4 class="fw-bold mb-4"><i class="bi bi-plus-circle text-primary me-2"></i>ลงประกาศของ</h4>
     <?php echo validation_errors('<div class="alert alert-danger py-2 small">', '</div>'); ?>
 
     <form method="post" action="<?= site_url('items/create') ?>" enctype="multipart/form-data">
         <?= form_hidden($this->security->get_csrf_token_name(), $this->security->get_csrf_hash()) ?>
 
         <div class="kl-card mb-3">
-            <div style="background:var(--kl-green);color:#fff;padding:.65rem 1rem;font-weight:700;font-size:.88rem;border-radius:var(--kl-radius) var(--kl-radius) 0 0;">
+            <div style="background:var(--kl-blue);color:#fff;padding:.65rem 1rem;font-weight:700;font-size:.88rem;border-radius:var(--kl-radius) var(--kl-radius) 0 0;">
                 รายละเอียดสินค้า
             </div>
             <div class="p-3">
@@ -47,7 +47,7 @@
         </div>
 
         <div class="kl-card mb-3">
-            <div style="background:var(--kl-green);color:#fff;padding:.65rem 1rem;font-weight:700;font-size:.88rem;border-radius:var(--kl-radius) var(--kl-radius) 0 0;">
+            <div style="background:var(--kl-blue);color:#fff;padding:.65rem 1rem;font-weight:700;font-size:.88rem;border-radius:var(--kl-radius) var(--kl-radius) 0 0;">
                 ราคา
             </div>
             <div class="p-3">
@@ -64,7 +64,7 @@
                         <div class="form-check form-switch mt-3">
                             <input class="form-check-input" type="checkbox" id="freeToggle" role="switch">
                             <label class="form-check-label fw-semibold" for="freeToggle">
-                                <span style="background:var(--kl-green);color:#fff;padding:3px 12px;border-radius:20px;font-size:.82rem;">
+                                <span style="background:var(--kl-blue);color:#fff;padding:3px 12px;border-radius:20px;font-size:.82rem;">
                                     🎁 แจกฟรี!
                                 </span>
                             </label>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="kl-card mb-3">
-            <div style="background:var(--kl-green);color:#fff;padding:.65rem 1rem;font-weight:700;font-size:.88rem;border-radius:var(--kl-radius) var(--kl-radius) 0 0;">
+            <div style="background:var(--kl-blue);color:#fff;padding:.65rem 1rem;font-weight:700;font-size:.88rem;border-radius:var(--kl-radius) var(--kl-radius) 0 0;">
                 สถานที่ / พื้นที่
             </div>
             <div class="p-3">
@@ -96,7 +96,7 @@
         </div>
 
         <div class="kl-card mb-4">
-            <div style="background:var(--kl-green);color:#fff;padding:.65rem 1rem;font-weight:700;font-size:.88rem;border-radius:var(--kl-radius) var(--kl-radius) 0 0;">
+            <div style="background:var(--kl-blue);color:#fff;padding:.65rem 1rem;font-weight:700;font-size:.88rem;border-radius:var(--kl-radius) var(--kl-radius) 0 0;">
                 รูปภาพ <span style="font-weight:400;opacity:.8;">(สูงสุด <?= MAX_ITEM_IMAGES ?> รูป, ไม่เกิน <?= MAX_UPLOAD_KB ?>KB/รูป)</span>
             </div>
             <div class="p-3">
