@@ -1,0 +1,162 @@
+/* ============================================================
+   ของเหลือ (Khong Luea) — Admin CSS
+   ============================================================ */
+
+:root {
+  --kl-green:      #1a9e5c;
+  --kl-green-dark: #157a47;
+  --kl-green-light:#e8f7ef;
+  --kl-orange:     #f97316;
+  --kl-sidebar-bg: #0f2a1a;
+  --kl-sidebar-w:  230px;
+}
+
+body {
+  background: #f0f4f0;
+  font-family: 'Sarabun','Helvetica Neue',sans-serif;
+  font-size: 14px;
+}
+
+#admin-wrapper { min-height: 100vh; }
+
+/* Sidebar */
+#admin-sidebar {
+  width: var(--kl-sidebar-w);
+  min-height: 100vh;
+  background: var(--kl-sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+#admin-sidebar .sidebar-brand {
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+#admin-sidebar .sidebar-brand .brand-name {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#admin-sidebar .sidebar-brand .brand-logo-sm {
+  width: 30px; height: 30px;
+  background: var(--kl-green);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#admin-sidebar .sidebar-brand .brand-sub {
+  color: rgba(255,255,255,.45);
+  font-size: .7rem;
+  margin-top: 2px;
+}
+#admin-sidebar .nav { padding: .5rem .75rem; }
+#admin-sidebar .nav-link {
+  color: rgba(255,255,255,.6);
+  font-size: .85rem;
+  font-weight: 500;
+  padding: .55rem .85rem;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  transition: all .15s;
+}
+#admin-sidebar .nav-link:hover {
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.9);
+}
+#admin-sidebar .nav-link.active {
+  background: var(--kl-green) !important;
+  color: #fff !important;
+}
+#admin-sidebar .nav-link i { font-size: 1rem; }
+#admin-sidebar .sidebar-footer {
+  margin-top: auto;
+  padding: .75rem;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+
+/* Top bar */
+#admin-topbar {
+  background: #fff;
+  border-bottom: 1px solid #e2e8e2;
+  padding: .65rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#admin-topbar .page-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a2e1a;
+}
+
+/* Content */
+#admin-content { min-width: 0; }
+.admin-body { padding: 1.5rem; }
+
+/* Stat cards */
+.kl-stat-card {
+  background: #fff;
+  border: 1px solid #e2e8e2;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.kl-stat-card .stat-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.kl-stat-card .stat-label { font-size: .78rem; color: #6b7c6b; font-weight: 500; }
+.kl-stat-card .stat-value { font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
+
+/* Table */
+.kl-table-card {
+  background: #fff;
+  border: 1px solid #e2e8e2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.kl-table-card .table-header {
+  padding: .85rem 1.25rem;
+  border-bottom: 1px solid #e2e8e2;
+  background: #fff;
+}
+.table th {
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #6b7c6b;
+  font-weight: 700;
+  background: #f7faf7;
+  border-bottom: 2px solid #e2e8e2 !important;
+}
+.table td { font-size: .86rem; vertical-align: middle; }
+.table-hover tbody tr:hover { background: #f9fbf9; }
+
+/* Buttons */
+.btn-primary { background: var(--kl-green); border-color: var(--kl-green); }
+.btn-primary:hover { background: var(--kl-green-dark); border-color: var(--kl-green-dark); }
+.btn-outline-primary { color: var(--kl-green); border-color: var(--kl-green); }
+.btn-outline-primary:hover { background: var(--kl-green); border-color: var(--kl-green); }
+.text-primary { color: var(--kl-green) !important; }
+.bg-primary   { background: var(--kl-green) !important; }
+
+.form-control:focus,.form-select:focus {
+  border-color: var(--kl-green);
+  box-shadow: 0 0 0 .2rem rgba(26,158,92,.15);
+}
