@@ -20,18 +20,18 @@ class Packages extends CI_Controller {
 
     public function create(): void
     {
-        if ($this->input->method() !== 'post') redirect('admin/packages');
+        if ($this->input->method() !== 'post') redirect(site_url('admin/packages'));
         $this->Package_model->create($this->_extract_post());
         $this->session->set_flashdata('success', 'Package created.');
-        redirect('admin/packages');
+        redirect(site_url('admin/packages'));
     }
 
     public function update(int $id): void
     {
-        if ($this->input->method() !== 'post') redirect('admin/packages');
+        if ($this->input->method() !== 'post') redirect(site_url('admin/packages'));
         $this->Package_model->update($id, $this->_extract_post());
         $this->session->set_flashdata('success', 'Package updated.');
-        redirect('admin/packages');
+        redirect(site_url('admin/packages'));
     }
 
     private function _extract_post(): array

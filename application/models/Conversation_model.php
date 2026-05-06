@@ -31,22 +31,22 @@ class Conversation_model extends CI_Model {
 
     public function get_for_user(int $user_id): array
     {
-        return $this->db->select('conversations.*, 
+        $uid = (int)$user_id;
+        $sql = "SELECT conversations.*,
                 items.title AS item_title,
                 (SELECT image_path FROM item_images WHERE item_id=items.id AND is_primary=1 LIMIT 1) AS item_image,
-                buyer.name AS buyer_name, buyer.avatar AS buyer_avatar,
-                seller.name AS seller_name, seller.avatar AS seller_avatar,
+                buyer.name   AS buyer_name,  buyer.avatar  AS buyer_avatar,
+                seller.name  AS seller_name, seller.avatar AS seller_avatar,
                 (SELECT message FROM messages WHERE conversation_id=conversations.id ORDER BY created_at DESC LIMIT 1) AS last_message,
-                (SELECT COUNT(*) FROM messages WHERE conversation_id=conversations.id AND receiver_id=? AND is_read=0) AS unread_count')
-            ->from($this->table)
-            ->join('items',         'items.id = conversations.item_id')
-            ->join('users AS buyer', 'buyer.id = conversations.buyer_id')
-            ->join('users AS seller','seller.id = conversations.seller_id')
-            ->where('conversations.buyer_id', $user_id)
-            ->or_where('conversations.seller_id', $user_id)
-            ->order_by('conversations.last_message_at', 'DESC')
-            ->bind([$user_id])  // bind the subquery param
-            ->get()->result_array();
+                (SELECT COUNT(*) FROM messages WHERE conversation_id=conversations.id AND receiver_id={$uid} AND is_read=0) AS unread_count
+                FROM conversations
+                JOIN items          ON items.id   = conversations.item_id
+                JOIN users AS buyer  ON buyer.id  = conversations.buyer_id
+                JOIN users AS seller ON seller.id = conversations.seller_id
+                WHERE conversations.buyer_id = {$uid} OR conversations.seller_id = {$uid}
+                ORDER BY conversations.last_message_at DESC";
+
+        return $this->db->query($sql)->result_array();
     }
 
     public function update_last_message(int $conv_id): void

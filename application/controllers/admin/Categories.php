@@ -20,7 +20,7 @@ class Categories extends CI_Controller {
 
     public function create(): void
     {
-        if ($this->input->method() !== 'post') redirect('admin/categories');
+        if ($this->input->method() !== 'post') redirect(site_url('admin/categories'));
 
         $slug = url_title($this->input->post('slug', TRUE), '-', TRUE);
         $this->Category_model->create([
@@ -31,12 +31,12 @@ class Categories extends CI_Controller {
             'is_active'  => 1,
         ]);
         $this->session->set_flashdata('success', 'Category created.');
-        redirect('admin/categories');
+        redirect(site_url('admin/categories'));
     }
 
     public function update(int $id): void
     {
-        if ($this->input->method() !== 'post') redirect('admin/categories');
+        if ($this->input->method() !== 'post') redirect(site_url('admin/categories'));
 
         $this->Category_model->update($id, [
             'name'       => $this->input->post('name', TRUE),
@@ -46,7 +46,7 @@ class Categories extends CI_Controller {
             'is_active'  => $this->input->post('is_active') ? 1 : 0,
         ]);
         $this->session->set_flashdata('success', 'Category updated.');
-        redirect('admin/categories');
+        redirect(site_url('admin/categories'));
     }
 
     private function _render(string $view, array $data = []): void

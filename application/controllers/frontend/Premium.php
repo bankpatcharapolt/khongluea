@@ -22,7 +22,7 @@ class Premium extends CI_Controller {
     {
         require_login();
 
-        if ($this->input->method() !== 'post') redirect('premium');
+        if ($this->input->method() !== 'post') redirect(site_url('premium'));
 
         $user       = current_user();
         $package_id = (int)$this->input->post('package_id');
@@ -36,6 +36,6 @@ class Premium extends CI_Controller {
         } else {
             $this->session->set_flashdata('error', 'Activation failed. Insufficient credits or invalid package.');
         }
-        redirect('premium');
+        redirect(site_url('premium'));
     }
 }

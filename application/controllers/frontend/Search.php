@@ -17,6 +17,6 @@ class Search extends CI_Controller {
         if ($q) {
             redirect('items?' . http_build_query(['q' => $q]));
         }
-        redirect('items');
+        redirect(site_url('items'));
     }
 }

@@ -94,7 +94,7 @@ class Items extends CI_Controller {
             $active_count = $this->Item_model->count_active_by_user($user['id']);
             if ($active_count >= FREE_LISTING_LIMIT) {
                 $this->session->set_flashdata('error', 'You have reached the free listing limit (' . FREE_LISTING_LIMIT . '). Upgrade to post more.');
-                redirect('premium');
+                redirect(site_url('premium'));
             }
         }
 
@@ -127,7 +127,7 @@ class Items extends CI_Controller {
             $this->Image_model->upload_multiple($item_id, 'images');
 
             $this->session->set_flashdata('success', 'Item posted successfully!');
-            redirect('items/' . $item_id);
+            redirect(site_url('items/' . $item_id));
         }
 
         $this->_render('items/create', ['title' => 'Post New Item', 'categories' => $this->Category_model->get_all_active()]);
@@ -166,7 +166,7 @@ class Items extends CI_Controller {
             ]);
 
             $this->session->set_flashdata('success', 'Item updated.');
-            redirect('items/' . $id);
+            redirect(site_url('items/' . $id));
         }
 
         $this->_render('items/edit', ['title' => 'Edit Item', 'item' => $item, 'categories' => $this->Category_model->get_all_active()]);
@@ -182,7 +182,7 @@ class Items extends CI_Controller {
         $user = current_user();
         $this->Item_model->soft_delete($id, $user['id']);
         $this->session->set_flashdata('success', 'Item removed.');
-        redirect('profile/my-listings');
+        redirect(site_url('profile/my-listings'));
     }
 
     // ------------------------------------------------------------------

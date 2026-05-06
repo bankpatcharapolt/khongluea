@@ -114,9 +114,10 @@
     </a>
     <?php
     try {
-        $this->load->model('Category_model');
         $_cats = $this->Category_model->get_all_active();
-    } catch (Exception $e) { $_cats = []; }
+    } catch (Throwable $e) {
+        $_cats = [];
+    }
     foreach ($_cats as $c): ?>
     <a href="<?= site_url('items?category_id='.$c['id']) ?>"
        class="<?= $this->input->get('category_id') == $c['id'] ? 'active' : '' ?>">

@@ -42,7 +42,7 @@ class Users extends CI_Controller {
         $this->User_model->ban($id, ! $user['is_banned']);
         $msg = $user['is_banned'] ? 'User unbanned.' : 'User banned.';
         $this->session->set_flashdata('success', $msg);
-        redirect('admin/users');
+        redirect(site_url('admin/users'));
     }
 
     public function credits(int $id): void
@@ -53,7 +53,7 @@ class Users extends CI_Controller {
             $this->User_model->adjust_credits($id, $amount, CREDIT_ADMIN_ADJ, NULL, $note ?: 'Admin adjustment');
             $this->session->set_flashdata('success', 'Credits updated.');
         }
-        redirect('admin/users');
+        redirect(site_url('admin/users'));
     }
 
     private function _render(string $view, array $data = []): void

@@ -66,11 +66,11 @@ class Chat extends CI_Controller {
         if ( ! $item) show_404();
         if ($item['user_id'] == $user['id']) {
             $this->session->set_flashdata('error', 'You cannot chat about your own listing.');
-            redirect('items/' . $item_id);
+            redirect(site_url('items/' . $item_id));
         }
 
         $conv_id = $this->Conversation_model->get_or_create($item_id, $user['id'], $item['user_id']);
-        redirect('chat/' . $conv_id);
+        redirect(site_url('chat/' . $conv_id));
     }
 
     // ------------------------------------------------------------------

@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Base Site URL
 |--------------------------------------------------------------------------
 */
-$config['base_url']   = 'http://localhost/khongluea/';
+$config['base_url'] = isset($_SERVER['_CI_BASE_URL']) ? $_SERVER['_CI_BASE_URL'] : 'http://localhost/khongluea/';
 $config['index_page'] = '';
 
 /*
@@ -24,7 +24,7 @@ $config['encryption_key'] = 'REPLACE_WITH_32_CHAR_RANDOM_STRING_HERE';
 $config['sess_driver']             = 'files';
 $config['sess_cookie_name']        = 'kl_session';
 $config['sess_expiration']         = 7200;
-$config['sess_save_path']          = NULL;
+$config['sess_save_path']          = sys_get_temp_dir();
 $config['sess_match_ip']           = FALSE;
 $config['sess_time_to_update']     = 300;
 $config['sess_regenerate_destroy'] = FALSE;
@@ -75,7 +75,7 @@ $config['global_xss_filtering'] = FALSE;
 |--------------------------------------------------------------------------
 */
 $config['log_threshold'] = 1;
-$config['log_path']      = '';
+$config['log_path']      = APPPATH . 'logs/';
 $config['log_date_format'] = 'Y-m-d H:i:s';
 
 /*

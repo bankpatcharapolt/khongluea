@@ -45,14 +45,14 @@ class Items extends CI_Controller {
             $this->Item_model->admin_update($id, ['is_featured' => $item['is_featured'] ? 0 : 1]);
         }
         $this->session->set_flashdata('success', 'Featured status updated.');
-        redirect('admin/items');
+        redirect(site_url('admin/items'));
     }
 
     public function delete(int $id): void
     {
         $this->Item_model->admin_update($id, ['status' => ITEM_DELETED]);
         $this->session->set_flashdata('success', 'Item deleted.');
-        redirect('admin/items');
+        redirect(site_url('admin/items'));
     }
 
     private function _render(string $view, array $data = []): void

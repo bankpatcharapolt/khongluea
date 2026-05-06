@@ -24,4 +24,4 @@ $autoload['config'] = [];
 
 $autoload['language'] = [];
 
-$autoload['model'] = [];
+$autoload['model'] = ['Category_model'];

@@ -29,7 +29,7 @@ if ( ! function_exists('require_login')) {
         if ( ! is_logged_in()) {
             $CI =& get_instance();
             $CI->session->set_flashdata('error', 'Please log in to continue.');
-            redirect('login');
+            redirect(site_url('login'));
         }
         if ($admin && ! is_admin()) {
             show_error('Access denied. Admins only.', 403);

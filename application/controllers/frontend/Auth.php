@@ -15,7 +15,7 @@ class Auth extends CI_Controller {
 
     public function login(): void
     {
-        if (is_logged_in()) { redirect('/'); }
+        if (is_logged_in()) { redirect(site_url()); }
 
         if ($this->input->method() === 'post') {
             $this->form_validation->set_rules('email',    'Email',    'required|valid_email|trim');
@@ -49,7 +49,7 @@ class Auth extends CI_Controller {
             ]);
             $this->User_model->update($user['id'], ['last_seen_at' => date('Y-m-d H:i:s')]);
 
-            $redirect = $this->session->flashdata('redirect_to') ?: '/';
+            $redirect = $this->session->flashdata('redirect_to') ?: site_url();
             redirect($redirect);
         }
 
@@ -62,7 +62,7 @@ class Auth extends CI_Controller {
 
     public function register(): void
     {
-        if (is_logged_in()) { redirect('/'); }
+        if (is_logged_in()) { redirect(site_url()); }
 
         if ($this->input->method() === 'post') {
             $this->form_validation->set_rules('name',             'Name',             'required|trim|min_length[2]|max_length[100]');
@@ -83,7 +83,7 @@ class Auth extends CI_Controller {
             ]);
 
             $this->session->set_flashdata('success', 'Account created! Please log in.');
-            redirect('login');
+            redirect(site_url('login'));
         }
 
         $this->_render('auth/register', ['title' => 'Create Account']);
@@ -96,7 +96,7 @@ class Auth extends CI_Controller {
     public function logout(): void
     {
         $this->session->sess_destroy();
-        redirect('login');
+        redirect(site_url('login'));
     }
 
     // ------------------------------------------------------------------
@@ -109,7 +109,7 @@ class Auth extends CI_Controller {
             $email = $this->input->post('email', TRUE);
             // In production: generate reset token, store it, send email
             $this->session->set_flashdata('success', 'If that email exists, a reset link has been sent.');
-            redirect('forgot-password');
+            redirect(site_url('forgot-password'));
         }
         $this->_render('auth/forgot_password', ['title' => 'Forgot Password']);
     }
