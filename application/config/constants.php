@@ -36,4 +36,4 @@ define('MAX_UPLOAD_KB',     2048);
 define('CHAT_POLL_INTERVAL', 4000);
 
 // Placeholder image
-define('IMG_PLACEHOLDER', 'assets/img/no-image.png');
+define('IMG_PLACEHOLDER', 'assets/img/no-image.svg');

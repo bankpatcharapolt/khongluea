@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f0f3f0"/>
+  <g transform="translate(200,130)">
+    <rect x="-45" y="-40" width="90" height="70" rx="8" fill="#d0ddd0"/>
+    <circle cx="-15" cy="-18" r="10" fill="#b0c8b0"/>
+    <polygon points="-45,30 -10,-10 20,18 45,-5 65,30" fill="#b8ccb8"/>
+  </g>
+  <text x="200" y="210" font-family="Arial,sans-serif" font-size="13" fill="#8a9e8a" text-anchor="middle">ไม่มีรูปภาพ</text>
+</svg>

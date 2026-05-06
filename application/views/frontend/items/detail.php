@@ -83,7 +83,24 @@
             <!-- Meta -->
             <ul class="list-unstyled small text-muted mb-3">
                 <?php if ($item['location_text']): ?>
-                <li><i class="bi bi-geo-alt me-2"></i><?= htmlspecialchars($item['location_text']) ?></li>
+                <li>
+                    <i class="bi bi-geo-alt me-2"></i><?= htmlspecialchars($item['location_text']) ?>
+                    <?php if (!empty($item['map_url'])): ?>
+                        <a href="<?= htmlspecialchars($item['map_url']) ?>" target="_blank" rel="noopener"
+                           class="ms-2 badge text-decoration-none"
+                           style="background:#4285f4;color:#fff;font-size:.7rem;padding:3px 8px;border-radius:5px;">
+                            <i class="bi bi-map me-1"></i>ดูแผนที่
+                        </a>
+                    <?php endif; ?>
+                </li>
+                <?php elseif (!empty($item['map_url'])): ?>
+                <li>
+                    <i class="bi bi-geo-alt me-2"></i>
+                    <a href="<?= htmlspecialchars($item['map_url']) ?>" target="_blank" rel="noopener"
+                       class="text-decoration-none fw-600" style="color:#4285f4;">
+                        <i class="bi bi-map me-1"></i>ดูตำแหน่งบน Google Maps
+                    </a>
+                </li>
                 <?php endif; ?>
                 <li><i class="bi bi-eye me-2"></i><?= number_format($item['view_count']) ?> views</li>
                 <li><i class="bi bi-clock me-2"></i>Listed <?= time_ago($item['created_at']) ?></li>

@@ -82,6 +82,26 @@
                 <input type="text" name="location_text" class="form-control"
                        value="<?= set_value('location_text') ?>"
                        placeholder="เช่น สุขุมวิท กรุงเทพฯ / เมืองเชียงใหม่">
+
+                <div class="mt-3">
+                    <label class="form-label fw-semibold small">
+                        <i class="bi bi-geo-alt-fill text-danger me-1"></i>ลิงก์ Google Maps
+                        <span class="text-muted fw-400">(ไม่บังคับ)</span>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text" style="background:#fff;">
+                            <img src="https://maps.google.com/favicon.ico" width="16" height="16" alt="Google Maps" onerror="this.style.display='none'">
+                        </span>
+                        <input type="url" name="map_url" class="form-control"
+                               value="<?= set_value('map_url') ?>"
+                               placeholder="https://maps.app.goo.gl/...">
+                    </div>
+                    <div class="form-text">
+                        <i class="bi bi-info-circle me-1"></i>
+                        เปิด Google Maps → กดแชร์ → คัดลอกลิงก์ แล้ววางที่นี่
+                    </div>
+                </div>
+
                 <div class="row g-2 mt-2">
                     <div class="col-6">
                         <input type="number" name="location_lat" class="form-control form-control-sm"
@@ -120,9 +140,24 @@
 const priceInput = document.getElementById('priceInput');
 const freeToggle = document.getElementById('freeToggle');
 freeToggle.addEventListener('change', function() {
-    priceInput.value = this.checked ? '0' : '';
-    priceInput.disabled = this.checked;
+    if (this.checked) {
+        priceInput.value = '0';
+        priceInput.setAttribute('readonly', true);
+        priceInput.style.opacity = '0.5';
+    } else {
+        priceInput.value = '';
+        priceInput.removeAttribute('readonly');
+        priceInput.style.opacity = '1';
+        priceInput.focus();
+    }
 });
-if (priceInput.value === '0') { freeToggle.checked = true; priceInput.disabled = true; }
-priceInput.addEventListener('input', function() { freeToggle.checked = (this.value === '0' || this.value === ''); });
+if (priceInput.value === '0' || priceInput.value === '') {
+    freeToggle.checked = true;
+    priceInput.value = '0';
+    priceInput.setAttribute('readonly', true);
+    priceInput.style.opacity = '0.5';
+}
+priceInput.addEventListener('input', function() {
+    freeToggle.checked = (this.value === '0' || this.value === '');
+});
 </script>

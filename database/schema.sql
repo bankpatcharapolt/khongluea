@@ -73,6 +73,7 @@ CREATE TABLE `items` (
   `location_text`   VARCHAR(200)          NULL DEFAULT NULL,
   `location_lat`    DECIMAL(10,7)         NULL DEFAULT NULL,
   `location_lng`    DECIMAL(10,7)         NULL DEFAULT NULL,
+  `map_url`         VARCHAR(500)          NULL DEFAULT NULL COMMENT 'Google Maps link',
   `status`          ENUM('active','reserved','sold','deleted') NOT NULL DEFAULT 'active',
   `is_free`         TINYINT(1)        NOT NULL DEFAULT 0,
   `view_count`      INT(11)  UNSIGNED NOT NULL DEFAULT 0,

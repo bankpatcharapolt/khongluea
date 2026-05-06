@@ -102,7 +102,7 @@ class Items extends CI_Controller {
             $this->form_validation->set_rules('title',       'Title',       'required|trim|max_length[200]');
             $this->form_validation->set_rules('category_id', 'Category',    'required|is_natural_no_zero');
             $this->form_validation->set_rules('description', 'Description', 'required|trim');
-            $this->form_validation->set_rules('price',       'Price',       'required|decimal');
+            $this->form_validation->set_rules('price',       'Price',       'required|numeric');
             $this->form_validation->set_rules('condition',   'Condition',   'required|in_list[new,like_new,good,fair,poor]');
 
             if ($this->form_validation->run() === FALSE) {
@@ -115,15 +115,15 @@ class Items extends CI_Controller {
                 'category_id'   => (int)$this->input->post('category_id'),
                 'title'         => $this->input->post('title', TRUE),
                 'description'   => $this->security->xss_clean($this->input->post('description')),
-                'price'         => (float)$this->input->post('price'),
+                'price'         => max(0, (float)str_replace([',', ' '], '', $this->input->post('price') ?? '0')),
                 'condition'     => $this->input->post('condition'),
                 'location_text' => $this->input->post('location_text', TRUE),
                 'location_lat'  => $this->input->post('location_lat') ?: NULL,
                 'location_lng'  => $this->input->post('location_lng') ?: NULL,
+                'map_url'       => $this->input->post('map_url', TRUE) ?: NULL,
             ]);
 
             // Handle image uploads
-            $this->load->model('Image_model');
             $this->Image_model->upload_multiple($item_id, 'images');
 
             $this->session->set_flashdata('success', 'Item posted successfully!');
@@ -147,7 +147,7 @@ class Items extends CI_Controller {
 
         if ($this->input->method() === 'post') {
             $this->form_validation->set_rules('title',       'Title',    'required|trim|max_length[200]');
-            $this->form_validation->set_rules('price',       'Price',    'required|decimal');
+            $this->form_validation->set_rules('price',       'Price',    'required|numeric');
             $this->form_validation->set_rules('condition',   'Condition','required|in_list[new,like_new,good,fair,poor]');
 
             if ($this->form_validation->run() === FALSE) {
@@ -158,10 +158,11 @@ class Items extends CI_Controller {
             $this->Item_model->update($id, $user['id'], [
                 'title'         => $this->input->post('title', TRUE),
                 'description'   => $this->security->xss_clean($this->input->post('description')),
-                'price'         => (float)$this->input->post('price'),
+                'price'         => max(0, (float)str_replace([',', ' '], '', $this->input->post('price') ?? '0')),
                 'condition'     => $this->input->post('condition'),
                 'category_id'   => (int)$this->input->post('category_id'),
                 'location_text' => $this->input->post('location_text', TRUE),
+                'map_url'       => $this->input->post('map_url', TRUE) ?: NULL,
                 'status'        => $this->input->post('status'),
             ]);
 

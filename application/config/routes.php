@@ -56,3 +56,8 @@ $route['premium']              = 'frontend/Premium/packages';
 $route['premium/activate']     = 'frontend/Premium/activate';
 $route['favorites']            = 'frontend/Favorites/index';
 $route['favorites/toggle']     = 'frontend/Favorites/toggle';
+
+// Account Settings
+$route['account/settings']      = 'frontend/Account/settings';
+$route['account/settings/save'] = 'frontend/Account/settings_save';
+$route['account/notifications'] = 'frontend/Account/notifications';

@@ -1,5 +1,5 @@
 <?php
-$img = !empty($item['primary_image']) ? base_url($item['primary_image']) : base_url('assets/img/no-image.png');
+$img = !empty($item['primary_image']) ? base_url($item['primary_image']) : base_url('assets/img/no-image.svg');
 $price = (float)$item['price'];
 $is_free = ($price <= 0);
 $is_sold = ($item['status'] === 'sold');

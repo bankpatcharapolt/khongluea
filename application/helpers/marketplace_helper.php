@@ -2,11 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 if ( ! function_exists('format_price')) {
-    function format_price(float $price, string $currency = 'THB'): string {
+    function format_price(float $price, string $currency = '฿'): string {
         if ($price <= 0) {
-            return '<span class="badge bg-success fs-7">FREE</span>';
+            return '<span class="badge-free">แจกฟรี!</span>';
         }
-        return '<span class="fw-semibold">' . $currency . ' ' . number_format($price, 2) . '</span>';
+        // แสดงทศนิยมเฉพาะเมื่อมีสตางค์ เช่น 500 → ฿500, 499.50 → ฿499.50
+        $formatted = (floor($price) == $price)
+            ? number_format((int)$price)
+            : number_format($price, 2);
+        return '<span class="fw-800 text-primary">' . $currency . $formatted . '</span>';
     }
 }
 
