@@ -37,3 +37,6 @@ define('CHAT_POLL_INTERVAL', 4000);
 
 // Placeholder image
 define('IMG_PLACEHOLDER', 'assets/img/no-image.svg');
+
+
+define('CRON_SECRET', 'v9B3nL7xK2mP8qR4zW1cT6jH5fF0dYkP2mQz5xW8vRjL4wTc');
