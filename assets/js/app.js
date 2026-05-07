@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var meta = document.querySelector('meta[name="csrf-token"]');
       if (!meta) return;
       var self = this;
-      var baseUrl = document.querySelector('base') ? document.querySelector('base').href : window.location.origin + '/';
+      var baseUrl = (document.querySelector('meta[name="base-url"]') || {}).content || window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + '/';
 
       fetch(baseUrl + 'favorites/toggle', {
         method: 'POST',

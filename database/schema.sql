@@ -297,16 +297,16 @@ CREATE TABLE `notifications` (
 -- SEED: Default categories
 -- ------------------------------------------------------------
 INSERT INTO `categories` (`name`, `slug`, `icon`, `sort_order`) VALUES
-('Electronics',       'electronics',        'bi-cpu',               1),
-('Fashion & Apparel', 'fashion-apparel',    'bi-bag',               2),
-('Furniture & Home',  'furniture-home',     'bi-house',             3),
-('Books & Media',     'books-media',        'bi-book',              4),
-('Sports & Outdoors', 'sports-outdoors',    'bi-bicycle',           5),
-('Toys & Games',      'toys-games',         'bi-controller',        6),
-('Vehicles & Parts',  'vehicles-parts',     'bi-car-front',         7),
-('Free Items',        'free-items',         'bi-gift',              8),
-('Services',          'services',           'bi-person-workspace',  9),
-('Other',             'other',              'bi-three-dots',       10);
+('อิเล็กทรอนิกส์',    'electronics',        'bi-cpu',               1),
+('แฟชั่น & เสื้อผ้า', 'fashion-apparel',    'bi-bag',               2),
+('เฟอร์นิเจอร์ & บ้าน','furniture-home',    'bi-house',             3),
+('หนังสือ & มีเดีย',   'books-media',        'bi-book',              4),
+('กีฬา & กลางแจ้ง',   'sports-outdoors',    'bi-bicycle',           5),
+('ของเล่น & เกม',      'toys-games',         'bi-controller',        6),
+('ยานพาหนะ & อะไหล่', 'vehicles-parts',     'bi-car-front',         7),
+('แจกฟรี',             'free-items',         'bi-gift',              8),
+('บริการ',             'services',           'bi-person-workspace',  9),
+('อื่นๆ',              'other',              'bi-three-dots',       10);
 
 -- ------------------------------------------------------------
 -- SEED: Premium packages

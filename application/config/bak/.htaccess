@@ -1,6 +1,6 @@
 Options -Indexes
 RewriteEngine On
-RewriteBase /khongluea/
+RewriteBase /
 
 # Security: block hidden files
 RewriteRule ^\.           -  [F,L]

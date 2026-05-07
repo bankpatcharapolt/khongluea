@@ -25,8 +25,8 @@ class Welcome extends CI_Controller {
             $featured   = $this->Item_model->get_featured(8);
             $recent     = $this->Item_model->get_recent(12);
             $categories = $this->Category_model->get_all_active();
-        } catch (Exception $e) {
-            log_message('error', 'Welcome::index DB: ' . $e->getMessage());
+        } catch (Throwable $e) {
+            log_message('error', 'Welcome::index: ' . $e->getMessage());
         }
 
         $this->load->view('layouts/frontend_layout', [

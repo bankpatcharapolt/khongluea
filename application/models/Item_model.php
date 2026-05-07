@@ -72,8 +72,16 @@ class Item_model extends CI_Model {
             (SELECT image_path FROM item_images WHERE item_id=items.id AND is_primary=1 LIMIT 1) AS primary_image')
             ->from($this->table)
             ->join('users', 'users.id = items.user_id')
-            ->where('items.status', ITEM_ACTIVE)
             ->where('users.is_banned', 0);
+
+        // ถ้าดูของ user เอง → แสดงทุก status ยกเว้น deleted
+        // ถ้าดู public → แสดงเฉพาะ active + reserved
+        if (!empty($filters['user_id'])) {
+            $this->db->where('items.user_id', (int)$filters['user_id'])
+                     ->where('items.status !=', ITEM_DELETED);
+        } else {
+            $this->db->where_in('items.status', [ITEM_ACTIVE, ITEM_RESERVED]);
+        }
 
         if ( ! empty($filters['category_id'])) {
             $this->db->where('items.category_id', (int)$filters['category_id']);
@@ -96,9 +104,6 @@ class Item_model extends CI_Model {
                 ->like('items.title', $s)
                 ->or_like('items.description', $s)
                 ->group_end();
-        }
-        if ( ! empty($filters['user_id'])) {
-            $this->db->where('items.user_id', (int)$filters['user_id']);
         }
     }
 
@@ -132,7 +137,7 @@ class Item_model extends CI_Model {
             (SELECT image_path FROM item_images WHERE item_id=items.id AND is_primary=1 LIMIT 1) AS primary_image')
             ->from($this->table)
             ->join('users', 'users.id = items.user_id')
-            ->where('items.status', ITEM_ACTIVE)
+            ->where_in('items.status', [ITEM_ACTIVE, ITEM_RESERVED])
             ->where('items.is_featured', 1)
             ->where('users.is_banned', 0)
             ->order_by('items.created_at', 'DESC')
@@ -145,7 +150,7 @@ class Item_model extends CI_Model {
             (SELECT image_path FROM item_images WHERE item_id=items.id AND is_primary=1 LIMIT 1) AS primary_image')
             ->from($this->table)
             ->join('users', 'users.id = items.user_id')
-            ->where('items.status', ITEM_ACTIVE)
+            ->where_in('items.status', [ITEM_ACTIVE, ITEM_RESERVED])
             ->where('users.is_banned', 0)
             ->order_by('items.created_at', 'DESC')
             ->limit($limit)->get()->result_array();
@@ -217,8 +222,9 @@ class Item_model extends CI_Model {
 
     public function count_active_by_user(int $user_id): int
     {
+        // นับทั้ง active และ reserved สำหรับ free tier limit
         return $this->db->where('user_id', $user_id)
-            ->where('status', ITEM_ACTIVE)
+            ->where_in('status', [ITEM_ACTIVE, ITEM_RESERVED])
             ->count_all_results($this->table);
     }
 }

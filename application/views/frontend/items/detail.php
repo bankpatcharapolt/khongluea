@@ -74,9 +74,9 @@
                 <?php endif; ?>
             </div>
 
-            <!-- Description -->
+            <!-- รายละเอียด -->
             <div class="card border-0 bg-light p-3 mb-3">
-                <h6 class="fw-semibold mb-2">Description</h6>
+                <h6 class="fw-semibold mb-2">รายละเอียด</h6>
                 <p class="mb-0 text-muted"><?= nl2br(htmlspecialchars($item['description'])) ?></p>
             </div>
 
@@ -102,8 +102,8 @@
                     </a>
                 </li>
                 <?php endif; ?>
-                <li><i class="bi bi-eye me-2"></i><?= number_format($item['view_count']) ?> views</li>
-                <li><i class="bi bi-clock me-2"></i>Listed <?= time_ago($item['created_at']) ?></li>
+                <li><i class="bi bi-eye me-2"></i><?= number_format($item['view_count']) ?> ครั้งที่ดู</li>
+                <li><i class="bi bi-clock me-2"></i>ลงเมื่อ <?= time_ago($item['created_at']) ?></li>
                 <li><i class="bi bi-tag me-2"></i><?= htmlspecialchars($item['category_name']) ?></li>
             </ul>
 
@@ -128,39 +128,44 @@
 
             <!-- Actions -->
             <?php $current = current_user(); ?>
-            <?php if ($item['status'] === 'active'): ?>
+            <?php if (in_array($item['status'], ['active', 'reserved'])): ?>
                 <?php if (is_logged_in() && $current['id'] != $item['user_id']): ?>
+                    <?php if ($item['status'] === 'reserved'): ?>
+                        <div class="alert mb-2 py-2 text-center fw-600" style="background:#fff3e0;border:1.5px solid #ffb300;color:#b45309;border-radius:9px;">
+                            <i class="bi bi-lock-fill me-2"></i>ของชิ้นนี้ถูกจองแล้ว แต่ยังติดต่อได้
+                        </div>
+                    <?php endif; ?>
                     <form method="post" action="<?= site_url('chat/start') ?>">
                         <?= form_hidden($this->security->get_csrf_token_name(), $this->security->get_csrf_hash()) ?>
                         <input type="hidden" name="item_id" value="<?= $item['id'] ?>">
-                        <button type="submit" class="btn btn-primary w-100 btn-lg fw-semibold">
-                            <i class="bi bi-chat-dots me-2"></i>Contact Seller
+                        <button type="submit" class="btn btn-primary w-100 btn-lg fw-700" style="border-radius:9px;">
+                            <i class="bi bi-chat-dots me-2"></i>ติดต่อผู้ขาย
                         </button>
                     </form>
                 <?php elseif (!is_logged_in()): ?>
-                    <a href="<?= site_url('login') ?>" class="btn btn-primary w-100 btn-lg fw-semibold">
-                        <i class="bi bi-chat-dots me-2"></i>Login to Contact Seller
+                    <a href="<?= site_url('login') ?>" class="btn btn-primary w-100 btn-lg fw-700" style="border-radius:9px;">
+                        <i class="bi bi-chat-dots me-2"></i>เข้าสู่ระบบเพื่อติดต่อผู้ขาย
                     </a>
                 <?php else: ?>
                     <div class="d-flex gap-2">
-                        <a href="<?= site_url('items/edit/' . $item['id']) ?>" class="btn btn-outline-primary flex-fill">
-                            <i class="bi bi-pencil me-1"></i>Edit
+                        <a href="<?= site_url('items/edit/' . $item['id']) ?>" class="btn btn-outline-primary flex-fill" style="border-radius:9px;">
+                            <i class="bi bi-pencil me-1"></i>แก้ไข
                         </a>
-                        <a href="<?= site_url('items/delete/' . $item['id']) ?>" class="btn btn-outline-danger"
-                           onclick="return confirm('Delete this item?')">
+                        <a href="<?= site_url('items/delete/' . $item['id']) ?>" class="btn btn-outline-danger" style="border-radius:9px;"
+                           onclick="return confirm('ลบประกาศนี้ถาวรเลยใช่ไหม?')">
                             <i class="bi bi-trash"></i>
                         </a>
                     </div>
                 <?php endif; ?>
             <?php else: ?>
-                <div class="alert alert-secondary">This item is no longer available.</div>
+                <div class="alert alert-secondary">ของชิ้นนี้ไม่ว่างแล้ว.</div>
             <?php endif; ?>
 
             <!-- Report -->
             <?php if (is_logged_in() && $current['id'] != $item['user_id']): ?>
             <div class="mt-2 text-center">
                 <a href="#" class="text-muted small text-decoration-none">
-                    <i class="bi bi-flag me-1"></i>Report this listing
+                    <i class="bi bi-flag me-1"></i>รายงานประกาศนี้
                 </a>
             </div>
             <?php endif; ?>

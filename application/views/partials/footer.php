@@ -2,7 +2,11 @@
   <div class="container-fluid px-3 px-lg-4" style="max-width:1400px;margin:0 auto;">
     <div class="row g-4 pb-4">
       <div class="col-md-4">
-        <div class="footer-brand mb-2">🏷️ ของเหลือ</div>
+        <div class="footer-brand mb-2 d-flex align-items-center gap-2">
+          <img src="<?= base_url('assets/img/logo-icon.png') ?>" alt="ของเหลือ"
+               style="width:38px;height:38px;object-fit:contain;">
+          ของเหลือ
+        </div>
         <p class="small" style="color:rgba(255,255,255,.5);line-height:1.8;">
           แพลตฟอร์มซื้อขายของมือสอง C2C<br>
           ไม่มีค่าธรรมเนียม · ชำระนอกระบบ<br>

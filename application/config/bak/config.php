@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Base Site URL
 |--------------------------------------------------------------------------
 */
-$config['base_url'] = isset($_SERVER['_CI_BASE_URL']) ? $_SERVER['_CI_BASE_URL'] : 'http://localhost/khongluea/';
+$config['base_url'] = "https://khongluea.com/";
 $config['index_page'] = '';
 
 /*

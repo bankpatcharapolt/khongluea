@@ -51,7 +51,7 @@
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label fw-semibold">Name</label><input type="text" name="name" class="form-control" required></div>
                         <div class="col-md-6"><label class="form-label fw-semibold">Price (Credits)</label><input type="number" name="price_in_credits" class="form-control" value="0" min="0" required></div>
-                        <div class="col-12"><label class="form-label fw-semibold">Description</label><textarea name="description" class="form-control" rows="2"></textarea></div>
+                        <div class="col-12"><label class="form-label fw-semibold">รายละเอียด</label><textarea name="description" class="form-control" rows="2"></textarea></div>
                         <div class="col-md-4"><label class="form-label fw-semibold">Duration (days)</label><input type="number" name="duration_days" class="form-control" placeholder="Leave blank = one-time"></div>
                         <div class="col-md-4"><label class="form-label fw-semibold">Max Listings</label><input type="number" name="max_listings" class="form-control" placeholder="Leave blank = unlimited"></div>
                         <div class="col-md-4"><label class="form-label fw-semibold">Sort Order</label><input type="number" name="sort_order" class="form-control" value="0"></div>
@@ -78,7 +78,7 @@
                     <div class="row g-3">
                         <div class="col-md-6"><label class="form-label fw-semibold">Name</label><input type="text" name="name" id="epName" class="form-control" required></div>
                         <div class="col-md-6"><label class="form-label fw-semibold">Price (Credits)</label><input type="number" name="price_in_credits" id="epPrice" class="form-control" min="0" required></div>
-                        <div class="col-12"><label class="form-label fw-semibold">Description</label><textarea name="description" id="epDesc" class="form-control" rows="2"></textarea></div>
+                        <div class="col-12"><label class="form-label fw-semibold">รายละเอียด</label><textarea name="description" id="epDesc" class="form-control" rows="2"></textarea></div>
                         <div class="col-md-4"><label class="form-label fw-semibold">Duration (days)</label><input type="number" name="duration_days" id="epDuration" class="form-control"></div>
                         <div class="col-md-4"><label class="form-label fw-semibold">Max Listings</label><input type="number" name="max_listings" id="epMaxList" class="form-control"></div>
                         <div class="col-md-4"><label class="form-label fw-semibold">Sort Order</label><input type="number" name="sort_order" id="epOrder" class="form-control"></div>

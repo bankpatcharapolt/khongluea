@@ -2,6 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="<?= base_url('assets/img/favicon.png') ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($title ?? 'ของเหลือ') ?> | ของเหลือ</title>
   <?= csrf_meta_tag() ?>
@@ -19,10 +20,9 @@
   <div class="row justify-content-center">
     <div class="col-md-5 col-lg-4">
       <div class="text-center mb-4">
-        <a href="<?= site_url('/') ?>" class="text-decoration-none">
-          <div style="width:60px;height:60px;background:var(--g);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto .6rem;box-shadow:0 6px 20px rgba(0,177,79,.3);">🏷️</div>
-          <div style="font-size:1.4rem;font-weight:800;color:var(--g);line-height:1;">ของเหลือ</div>
-          <div style="font-size:.65rem;color:var(--muted);letter-spacing:.8px;">KHONG LUEA</div>
+        <a href="<?= site_url('/') ?>" class="text-decoration-none d-flex flex-column align-items-center">
+          <img src="<?= base_url('assets/img/logo-vertical.png') ?>" alt="ของเหลือ"
+               style="width:140px;object-fit:contain;margin-bottom:.2rem;">
         </a>
       </div>
       <?= $this->load->view('partials/flash_message',[],TRUE) ?>

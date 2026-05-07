@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <base href="<?= base_url() ?>">
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="<?= base_url('assets/img/favicon.png') ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($title ?? 'ของเหลือ') ?> | ของเหลือ</title>
   <?= csrf_meta_tag() ?>

@@ -18,7 +18,11 @@ p{color:#6b7c6b;font-size:.92rem;margin:0 0 24px;line-height:1.6;}
 </head>
 <body>
 <div class="box">
-    <div class="brand">🏷️ ของเหลือ</div>
+    <div class="brand d-flex align-items-center justify-content-center gap-2" style="display:flex!important;">
+      <img src="/khongluea/assets/img/logo.png" alt="ของเหลือ"
+           style="width:28px;height:28px;object-fit:contain;border-radius:6px;">
+      ของเหลือ
+    </div>
     <div class="num">404</div>
     <h2>ไม่พบหน้าที่ต้องการ</h2>
     <p>หน้านี้อาจถูกลบไปแล้ว หรือ URL ไม่ถูกต้อง<br>

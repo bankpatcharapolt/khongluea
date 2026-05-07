@@ -21,7 +21,7 @@ $cond_map = ['new'=>['ใหม่','#00b14f','#e6f7ee'],'like_new'=>['เหม
     <?php if ($is_sold): ?>
       <div class="badge-sold">ขายแล้ว</div>
     <?php elseif ($is_res): ?>
-      <div class="badge-sold" style="background:rgba(255,107,53,.7);">จองแล้ว</div>
+      <div class="badge-sold" style="background:rgba(249,115,22,.82);">🔒 จองแล้ว</div>
     <?php endif; ?>
     <?php if (is_logged_in() && $me && $me['id'] != $item['user_id']): ?>
       <button class="btn-fav fav-toggle-btn" data-item-id="<?= $item['id'] ?>" title="บันทึก">
@@ -34,9 +34,11 @@ $cond_map = ['new'=>['ใหม่','#00b14f','#e6f7ee'],'like_new'=>['เหม
     <a href="<?= site_url('items/'.$item['id']) ?>" class="item-title">
       <?= htmlspecialchars($item['title']) ?>
     </a>
-    <span class="item-condition" style="background:<?= $cb ?>;color:<?= $cc ?>;border:1px solid <?= $cc ?>44;">
-      <?= $cl ?>
-    </span>
+    <?php if (!empty($item['location_text'])): ?>
+    <div class="item-location text-truncate">
+      <i class="bi bi-geo-alt me-1" style="color:var(--g);font-size:.75rem;"></i><?= htmlspecialchars(mb_substr($item['location_text'],0,22)) ?>
+    </div>
+    <?php endif; ?>
     <?php if ($is_free): ?>
       <div class="item-price is-free"><span>แจกฟรี!</span></div>
     <?php else: ?>

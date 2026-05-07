@@ -93,7 +93,7 @@ class Items extends CI_Controller {
         if ( ! $user['premium_status']) {
             $active_count = $this->Item_model->count_active_by_user($user['id']);
             if ($active_count >= FREE_LISTING_LIMIT) {
-                $this->session->set_flashdata('error', 'You have reached the free listing limit (' . FREE_LISTING_LIMIT . '). Upgrade to post more.');
+                $this->session->set_flashdata('error', 'คุณใช้ครบโควต้าฟรี (' . FREE_LISTING_LIMIT . ' ประกาศ) กรุณาอัปเกรดแพ็กเกจ');
                 redirect(site_url('premium'));
             }
         }
@@ -126,7 +126,7 @@ class Items extends CI_Controller {
             // Handle image uploads
             $this->Image_model->upload_multiple($item_id, 'images');
 
-            $this->session->set_flashdata('success', 'Item posted successfully!');
+            $this->session->set_flashdata('success', 'ลงประกาศสำเร็จแล้ว!');
             redirect(site_url('items/' . $item_id));
         }
 
@@ -143,7 +143,7 @@ class Items extends CI_Controller {
         $user = current_user();
         $item = $this->Item_model->get_by_id($id);
 
-        if ( ! $item || $item['user_id'] !== $user['id']) show_error('Not authorized.', 403);
+        if ( ! $item || $item['user_id'] !== $user['id']) show_error('ไม่มีสิทธิ์เข้าถึง', 403);
 
         if ($this->input->method() === 'post') {
             $this->form_validation->set_rules('title',       'Title',    'required|trim|max_length[200]');
@@ -166,7 +166,12 @@ class Items extends CI_Controller {
                 'status'        => $this->input->post('status'),
             ]);
 
-            $this->session->set_flashdata('success', 'Item updated.');
+            // อัปโหลดรูปภาพใหม่ (ถ้ามี)
+            if (!empty($_FILES['images']['name'][0])) {
+                $this->Image_model->upload_multiple($id, 'images');
+            }
+
+            $this->session->set_flashdata('success', 'อัปเดตสินค้าเรียบร้อยแล้ว');
             redirect(site_url('items/' . $id));
         }
 
@@ -182,7 +187,7 @@ class Items extends CI_Controller {
         require_login();
         $user = current_user();
         $this->Item_model->soft_delete($id, $user['id']);
-        $this->session->set_flashdata('success', 'Item removed.');
+        $this->session->set_flashdata('success', 'ลบประกาศแล้ว');
         redirect(site_url('profile/my-listings'));
     }
 
