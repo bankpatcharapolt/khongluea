@@ -130,12 +130,12 @@
     </a>
     <a href="<?= site_url('items?is_free=1') ?>" class="<?= $this->input->get('is_free')==='1' ? 'active' : '' ?>"
        style="<?= $this->input->get('is_free')==='1' ? '' : 'color:#00b14f;font-weight:600;' ?>">
-      🎁 แจกฟรี
+      แจกฟรี
     </a>
     <a href="<?= site_url('giveaway') ?>"
        class="<?= strpos(uri_string(), 'giveaway') === 0 ? 'active' : '' ?>"
        style="<?= strpos(uri_string(), 'giveaway') === 0 ? '' : 'color:#f59e0b;font-weight:600;' ?>">
-      🍱 แจกข้าวฟรี
+      แจกข้าวฟรี
     </a>
     <?php
     try {
