@@ -19,3 +19,11 @@ RewriteRule ^ - [L]
 
 # Route ทุกอย่างที่เหลือผ่าน CI3
 RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+
+# PHP 8.2+ compatibility — suppress deprecated dynamic property warnings
+<IfModule mod_php.c>
+    php_value error_reporting "E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED"
+</IfModule>
+<IfModule mod_php8.c>
+    php_value error_reporting "E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED"
+</IfModule>

@@ -163,6 +163,8 @@ a:hover { color: var(--g-d); }
   border-bottom: 1px solid var(--border);
   overflow-x: auto; white-space: nowrap;
   scrollbar-width: none;
+  position: relative;
+  z-index: 1039;
 }
 .kl-catbar::-webkit-scrollbar { display:none; }
 .kl-catbar-inner {

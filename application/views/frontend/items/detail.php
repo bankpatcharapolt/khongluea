@@ -31,14 +31,41 @@
                     <?php endif; ?>
                 </div>
                 <?php if (count($images) > 1): ?>
-                <div class="d-flex gap-2 mt-2 overflow-auto">
+                <div class="d-flex gap-2 mt-2 overflow-auto pb-1">
                     <?php foreach ($images as $i => $img): ?>
-                    <img src="<?= base_url($img['image_path']) ?>" class="rounded cursor-pointer border <?= $i === 0 ? 'border-primary border-2' : '' ?>"
-                         style="width:70px;height:60px;object-fit:cover;cursor:pointer;"
-                         onclick="document.querySelector('#itemCarousel').querySelectorAll('.carousel-item')[<?= $i ?>].classList.add('active');
-                                  document.querySelectorAll('[data-carousel-thumb]').forEach(e=>e.classList.remove('border-primary','border-2'));">
+                    <img src="<?= base_url($img['image_path']) ?>"
+                         class="rounded kl-thumb <?= $i === 0 ? 'kl-thumb-active' : '' ?>"
+                         data-slide-to="<?= $i ?>"
+                         style="width:70px;height:60px;object-fit:cover;cursor:pointer;flex-shrink:0;
+                                border:2px solid <?= $i === 0 ? 'var(--g)' : 'var(--border)' ?>;
+                                transition:border-color .15s;"
+                         alt="">
                     <?php endforeach; ?>
                 </div>
+                <script>
+                (function(){
+                    var carousel = document.getElementById('itemCarousel');
+                    if (!carousel) return;
+                    var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel, {ride: false});
+
+                    // คลิก thumbnail → เลื่อน carousel
+                    document.querySelectorAll('.kl-thumb').forEach(function(thumb) {
+                        thumb.addEventListener('click', function() {
+                            var idx = parseInt(this.getAttribute('data-slide-to'));
+                            bsCarousel.to(idx);
+                        });
+                    });
+
+                    // เมื่อ carousel เปลี่ยนรูป → อัปเดต thumbnail highlight
+                    carousel.addEventListener('slid.bs.carousel', function(e) {
+                        document.querySelectorAll('.kl-thumb').forEach(function(t) {
+                            var isActive = parseInt(t.getAttribute('data-slide-to')) === e.to;
+                            t.style.borderColor = isActive ? 'var(--g)' : 'var(--border)';
+                            t.classList.toggle('kl-thumb-active', isActive);
+                        });
+                    });
+                })();
+                </script>
                 <?php endif; ?>
             <?php else: ?>
                 <img src="<?= base_url(IMG_PLACEHOLDER) ?>" class="img-fluid rounded shadow-sm" style="height:420px;width:100%;object-fit:cover;" alt="No image">

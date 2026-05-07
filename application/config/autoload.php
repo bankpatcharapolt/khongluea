@@ -24,5 +24,4 @@ $autoload['config'] = [];
 
 $autoload['language'] = [];
 
-$autoload['model'] = ['Category_model', 'Message_model',
-                      'Giveaway_listing_model', 'Giveaway_reservation_model'];
+$autoload['model'] = ['Category_model', 'Message_model'];

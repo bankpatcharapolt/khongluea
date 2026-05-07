@@ -49,6 +49,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_Model {
 
+	public $benchmark;
+	public $hooks;
+	public $config;
+	public $load;
+	public $router;
+	public $uri;
+	public $input;
+	public $output;
+	public $security;
+	public $lang;
+	public $db;
+	public $session;
+	public $form_validation;
+	public $pagination;
+	public $upload;
+	public $email;
+
+
 	/**
 	 * Class constructor
 	 *

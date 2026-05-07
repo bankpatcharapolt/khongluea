@@ -33,13 +33,13 @@
           <li><a href="<?= site_url('premium') ?>">พรีเมียม ⭐</a></li>
         </ul>
       </div>
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <h6 class="mb-3">เกี่ยวกับ</h6>
         <p class="small" style="color:rgba(255,255,255,.45);line-height:1.8;">
           ของเหลือ สร้างด้วย CodeIgniter 3<br>
           Bootstrap 5 · PHP · MySQL
         </p>
-      </div>
+      </div> -->
     </div>
     <hr>
     <div class="d-flex justify-content-between flex-wrap gap-2 footer-btm pb-2">

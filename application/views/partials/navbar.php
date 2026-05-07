@@ -38,6 +38,12 @@
         <li class="nav-item d-none d-lg-block">
           <a class="nav-link" href="<?= site_url('items') ?>">เลือกชม</a>
         </li>
+        <li class="nav-item d-none d-lg-block">
+          <a class="nav-link d-flex align-items-center gap-1" href="<?= site_url('giveaway') ?>"
+             style="color:rgba(255,255,255,.9)!important;">
+            <i class="bi bi-gift-fill" style="color:#fbbf24;"></i>แจกของฟรี
+          </a>
+        </li>
 
         <?php if (is_logged_in()): ?>
           <?php $user = current_user(); ?>
@@ -50,7 +56,6 @@
 
           <!-- Chat + Unread badge -->
           <li class="nav-item position-relative">
-            
             <a class="nav-link" href="<?= site_url('chat') ?>" title="ข้อความ">
               <i class="bi bi-chat-dots fs-5"></i>
               <?php
@@ -126,6 +131,11 @@
     <a href="<?= site_url('items?is_free=1') ?>" class="<?= $this->input->get('is_free')==='1' ? 'active' : '' ?>"
        style="<?= $this->input->get('is_free')==='1' ? '' : 'color:#00b14f;font-weight:600;' ?>">
       🎁 แจกฟรี
+    </a>
+    <a href="<?= site_url('giveaway') ?>"
+       class="<?= strpos(uri_string(), 'giveaway') === 0 ? 'active' : '' ?>"
+       style="<?= strpos(uri_string(), 'giveaway') === 0 ? '' : 'color:#f59e0b;font-weight:600;' ?>">
+      🍱 แจกข้าวฟรี
     </a>
     <?php
     try {

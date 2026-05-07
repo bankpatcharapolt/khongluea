@@ -19,12 +19,12 @@
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-5 col-lg-4">
-      <div class="text-center mb-4">
+      <!-- <div class="text-center mb-4">
         <a href="<?= site_url('/') ?>" class="text-decoration-none d-flex flex-column align-items-center">
           <img src="<?= base_url('assets/img/logo-vertical.png') ?>" alt="ของเหลือ"
                style="width:140px;object-fit:contain;margin-bottom:.2rem;">
         </a>
-      </div>
+      </div> -->
       <?= $this->load->view('partials/flash_message',[],TRUE) ?>
       <div class="kl-auth-card"><?= $this->load->view($content_view,[],TRUE) ?></div>
       <p class="text-center mt-3" style="font-size:.75rem;color:var(--muted);">&copy; <?= date('Y') ?> ของเหลือ · Khong Luea</p>
