@@ -14,19 +14,25 @@ class Welcome extends CI_Controller {
 
     public function index(): void
     {
-        // Load frontend Home controller logic โดยตรง
-        $this->load->model(['Category_model', 'Item_model']);
-
         $featured   = [];
         $recent     = [];
         $categories = [];
 
-        // แยก try/catch แต่ละ call เพื่อไม่ให้ error หนึ่งทำให้ทั้งหมดพัง
-        try {
-            $categories = $this->Category_model->get_all_active();
-        } catch (Throwable $e) {
-            log_message('error', 'Welcome::categories: ' . $e->getMessage());
+        // โหลด database ก่อน
+        $this->load->database();
+
+        // Query categories โดยตรง — ไม่ผ่าน model เพื่อ debug
+        $cat_result = $this->db
+            ->where('is_active', 1)
+            ->order_by('sort_order', 'ASC')
+            ->get('categories');
+
+        if ($cat_result) {
+            $categories = $cat_result->result_array();
         }
+
+        $this->load->model('Item_model');
+
         try {
             $featured = $this->Item_model->get_featured(8);
         } catch (Throwable $e) {

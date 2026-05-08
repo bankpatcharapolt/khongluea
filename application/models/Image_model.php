@@ -2,6 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Image_model extends CI_Model {
+    public function __construct()
+    {
+        parent::__construct();
+        // CI3: get_instance() guaranteed after bootstrap
+        $CI =& get_instance();
+        $this->db = $CI->db;
+    }
 
     /**
      * Upload หลายไฟล์ด้วย native PHP move_uploaded_file()

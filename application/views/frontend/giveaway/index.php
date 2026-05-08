@@ -2,7 +2,8 @@
 
   <!-- Header -->
   <div class="d-flex align-items-center gap-3 mb-4">
-    <div style="width:48px;height:48px;background:var(--g-l);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;">🎁</div>
+    <!-- <div style="width:48px;height:48px;background:var(--g-l);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;">🎁</div>
+     -->
     <div>
       <h4 class="fw-800 mb-0">รับของแจกฟรี</h4>
       <p class="text-muted small mb-0">ของเหลือจากร้านค้า ร้านอาหาร ที่รอการส่งต่อ</p>

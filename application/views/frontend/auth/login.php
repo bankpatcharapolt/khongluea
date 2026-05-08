@@ -9,7 +9,7 @@
   </div>
   <div class="mb-3">
     <label class="form-label fw-600 small">รหัสผ่าน</label>
-    <input type="password" name="password" class="form-control" required placeholder="••••••••">
+    <input type="password" name="password" class="form-control" required placeholder="">
     <div class="text-end mt-1">
       <a href="<?= site_url('forgot-password') ?>" class="small text-primary">ลืมรหัสผ่าน?</a>
     </div>

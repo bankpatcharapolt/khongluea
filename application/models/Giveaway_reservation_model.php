@@ -2,6 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Giveaway_reservation_model extends CI_Model {
+    public function __construct()
+    {
+        parent::__construct();
+        // CI3: get_instance() guaranteed after bootstrap
+        $CI =& get_instance();
+        $this->db = $CI->db;
+    }
 
     protected string $table = 'giveaway_reservations';
 

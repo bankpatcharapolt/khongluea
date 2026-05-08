@@ -140,8 +140,9 @@
     </a>
     <?php
     try {
-        $this->load->model('Category_model');
-        $_cats = $this->Category_model->get_all_active();
+        // Query โดยตรงเพื่อ bypass model loading issues
+        $_cat_q = $this->db->where('is_active', 1)->order_by('sort_order', 'ASC')->get('categories');
+        $_cats  = $_cat_q ? $_cat_q->result_array() : [];
     } catch (Throwable $e) {
         $_cats = [];
     }

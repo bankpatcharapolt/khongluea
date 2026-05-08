@@ -20,10 +20,10 @@
   <div class="row justify-content-center">
     <div class="col-md-5 col-lg-4">
       <div class="text-center mb-4">
-        <a href="<?= site_url('/') ?>" class="text-decoration-none d-flex flex-column align-items-center">
+        <!-- <a href="<?= site_url('/') ?>" class="text-decoration-none d-flex flex-column align-items-center">
           <img src="<?= base_url('assets/img/logo-vertical.png') ?>" alt="ของเหลือ"
                style="width:140px;object-fit:contain;margin-bottom:.2rem;">
-        </a>
+        </a> -->
       </div>
       <?= $this->load->view('partials/flash_message',[],TRUE) ?>
       <div class="kl-auth-card"><?= $this->load->view($content_view,[],TRUE) ?></div>
