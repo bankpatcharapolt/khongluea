@@ -76,7 +76,7 @@ $config['global_xss_filtering'] = FALSE;
 | Logging
 |--------------------------------------------------------------------------
 */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 2;
 $config['log_path']      = APPPATH . 'logs/';
 $config['log_date_format'] = 'Y-m-d H:i:s';
 
