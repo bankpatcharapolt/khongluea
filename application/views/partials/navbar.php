@@ -61,6 +61,7 @@
               <?php
               $_unread = 0;
               try {
+                  $this->load->model('Message_model');
                   $_unread = (int)$this->Message_model->unread_count((int)$user['id']);
               } catch (Throwable $e) { $_unread = 0; }
               if ($_unread > 0): ?>
@@ -130,15 +131,16 @@
     </a>
     <a href="<?= site_url('items?is_free=1') ?>" class="<?= $this->input->get('is_free')==='1' ? 'active' : '' ?>"
        style="<?= $this->input->get('is_free')==='1' ? '' : 'color:#00b14f;font-weight:600;' ?>">
-      แจกฟรี
+      🎁 แจกฟรี
     </a>
     <a href="<?= site_url('giveaway') ?>"
        class="<?= strpos(uri_string(), 'giveaway') === 0 ? 'active' : '' ?>"
        style="<?= strpos(uri_string(), 'giveaway') === 0 ? '' : 'color:#f59e0b;font-weight:600;' ?>">
-      แจกข้าวฟรี
+      🍱 แจกข้าวฟรี
     </a>
     <?php
     try {
+        $this->load->model('Category_model');
         $_cats = $this->Category_model->get_all_active();
     } catch (Throwable $e) {
         $_cats = [];

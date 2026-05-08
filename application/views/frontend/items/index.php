@@ -79,7 +79,9 @@
           <select class="form-select form-select-sm w-auto" onchange="location.href=this.value" style="font-size:.83rem;">
             <?php $sorts=['newest'=>'ล่าสุด','price_asc'=>'ราคาน้อย→มาก','price_desc'=>'ราคามาก→น้อย'];
             foreach ($sorts as $v=>$l):
-              $url=site_url('items?').http_build_query(array_merge(array_filter($filters),['sort'=>$v])); ?>
+              // array_filter โดยปกติกิน "0" และ "" → ต้องเก็บ is_free=1 ไว้
+              $_f = array_filter($filters, function($v){ return $v !== '' && $v !== NULL; });
+              $url=site_url('items?').http_build_query(array_merge($_f,['sort'=>$v])); ?>
             <option value="<?= $url ?>" <?= $filters['sort']===$v?'selected':'' ?>><?= $l ?></option>
             <?php endforeach; ?>
           </select>

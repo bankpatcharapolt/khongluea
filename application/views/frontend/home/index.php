@@ -3,7 +3,7 @@
   <div class="container-fluid px-3 px-lg-4 kl-hero-inner" style="max-width:1400px;margin:0 auto;">
     <div class="row align-items-center">
       <div class="col-lg-8">
-        <h1>ซื้อ ขาย แจกของมือสอง ของกิน<br class="d-none d-md-block">ง่ายๆ ในชุมชน</h1>
+        <h1>ซื้อ ขาย แจกของมือสอง<br class="d-none d-md-block">ง่ายๆ ในชุมชน</h1>
         <p class="tagline">ไม่มีค่าธรรมเนียม · นัดรับส่งกันเอง · ปลอดภัย · เริ่มใช้ได้เลยฟรี</p>
 
         <div class="hero-search">

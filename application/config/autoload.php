@@ -24,4 +24,4 @@ $autoload['config'] = [];
 
 $autoload['language'] = [];
 
-$autoload['model'] = ['Category_model', 'Message_model'];
+$autoload['model'] = []; // Models loaded by controllers individually

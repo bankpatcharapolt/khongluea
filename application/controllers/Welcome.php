@@ -15,18 +15,27 @@ class Welcome extends CI_Controller {
     public function index(): void
     {
         // Load frontend Home controller logic โดยตรง
-        $this->load->model(['Item_model', 'Category_model']);
+        $this->load->model(['Category_model', 'Item_model']);
 
         $featured   = [];
         $recent     = [];
         $categories = [];
 
+        // แยก try/catch แต่ละ call เพื่อไม่ให้ error หนึ่งทำให้ทั้งหมดพัง
         try {
-            $featured   = $this->Item_model->get_featured(8);
-            $recent     = $this->Item_model->get_recent(12);
             $categories = $this->Category_model->get_all_active();
         } catch (Throwable $e) {
-            log_message('error', 'Welcome::index: ' . $e->getMessage());
+            log_message('error', 'Welcome::categories: ' . $e->getMessage());
+        }
+        try {
+            $featured = $this->Item_model->get_featured(8);
+        } catch (Throwable $e) {
+            log_message('error', 'Welcome::featured: ' . $e->getMessage());
+        }
+        try {
+            $recent = $this->Item_model->get_recent(12);
+        } catch (Throwable $e) {
+            log_message('error', 'Welcome::recent: ' . $e->getMessage());
         }
 
         $this->load->view('layouts/frontend_layout', [

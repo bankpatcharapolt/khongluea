@@ -297,6 +297,7 @@ CREATE TABLE `notifications` (
 -- SEED: Default categories
 -- ------------------------------------------------------------
 INSERT INTO `categories` (`name`, `slug`, `icon`, `sort_order`) VALUES
+('อาหาร & เครื่องดื่ม','food-beverage',     'bi-cup-hot-fill',      0),
 ('อิเล็กทรอนิกส์',    'electronics',        'bi-cpu',               1),
 ('แฟชั่น & เสื้อผ้า', 'fashion-apparel',    'bi-bag',               2),
 ('เฟอร์นิเจอร์ & บ้าน','furniture-home',    'bi-house',             3),
